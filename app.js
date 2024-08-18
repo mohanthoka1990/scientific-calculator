@@ -24,12 +24,17 @@ buttons.forEach(btn => {
             display.value =Math.tan(string);
         }else if (event.target.textContent === 'pow') {
             display.value =Math.pow(string,2);
-        }else if (event.target.textContent === 'root') {
-            display.value =Math.sqrt(string,2);
-        } else if (event.target.textContent === 'log') {
+        }else if (event.target.querySelector('img') && event.target.querySelector('img').alt === '') {
+            // If the button with image (π or √) is clicked
+            if (event.target.querySelector('img').src.includes('pi-mathematical-constant-symbol')) {
+                string += '3.14159265359'; // Value of π
+                display.value = string;
+            } else if (event.target.querySelector('img').src.includes('square-root-mathematical-symbol')) {
+                string = Math.sqrt(eval(string)).toString(); // Square root operation
+                display.value = string;
+            }
+        }else if (event.target.textContent === 'log') {
             display.value =Math.log(string);
-        }else if (event.target.textContent === 'pie') {
-            display.value =3.14159265359;
         }else if (event.target.textContent === 'e') {
             display.value =2.71828182846;
         }else if (event.target.textContent === 'x!') {
